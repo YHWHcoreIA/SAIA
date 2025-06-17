@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Plan de Cuentas{% endblock %}
+{% block content %}
+<h2>Plan de Cuentas Contables</h2>
+<a href="{{ url_for('config.add_account') }}" class="button">Añadir Cuenta</a>
+<table>
+    <tr><th>Código</th><th>Nombre</th><th>Tipo</th></tr>
+    {% for account in accounts %}
+        <tr>
+            <td>{{ account['code'] }}</td>
+            <td>{{ account['name'] }}</td>
+            <td>{{ account['type'] }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="3">No hay cuentas aún.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

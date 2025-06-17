@@ -1,6 +1,8 @@
 Flask
 gunicorn
-# Si usas exportaciones reales, agrega:
-# pandas
-# openpyxl
-# reportlab
+flask_sqlalchemy
+flask_migrate
+psycopg2-binary
+python-dotenv
+pytest
+flake8

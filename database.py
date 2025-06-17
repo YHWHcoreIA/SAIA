@@ -1,24 +1,33 @@
-import sqlite3
 from flask import g, current_app
+from sqlalchemy import create_engine, text
+from sqlalchemy.orm import sessionmaker
+
+engine = None
+SessionLocal = None
+
+def init_engine():
+    global engine, SessionLocal
+    if engine is None:
+        database_url = current_app.config['DATABASE_URL']
+        engine = create_engine(database_url, future=True)
+        SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db_path = current_app.config['DATABASE']
-        db = g._database = sqlite3.connect(db_path)
-        db.row_factory = sqlite3.Row
-    return db
+    if 'db' not in g:
+        init_engine()
+        g.db = SessionLocal()
+    return g.db
 
 def close_db(e=None):
-    db = g.pop('_database', None)
+    db = g.pop('db', None)
     if db is not None:
         db.close()
 
 def init_db():
-    db = get_db()
-    with open('schema.sql', 'r') as f:
-        db.executescript(f.read())
-    db.commit()
+    init_engine()
+    with engine.connect() as conn:
+        with open('schema.sql', 'r') as f:
+            conn.execute(text(f.read()))
 
 import click
 from flask.cli import with_appcontext

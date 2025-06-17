@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Añadir Cuenta{% endblock %}
+{% block content %}
+<h2>Añadir Cuenta al Plan de Cuentas</h2>
+<form method="post">
+    <label>Código:</label> <input name="code" required><br>
+    <label>Nombre:</label> <input name="name" required><br>
+    <label>Tipo:</label>
+    <select name="type" required>
+        <option value="">--Seleccione--</option>
+        {% for acc_type in account_types %}
+            <option value="{{ acc_type }}">{{ acc_type }}</option>
+        {% endfor %}
+    </select><br>
+    <button type="submit">Guardar</button>
+</form>
+<a href="{{ url_for('config.coa') }}">Volver</a>
+{% endblock %}
