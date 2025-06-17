@@ -1,0 +1,6 @@
+Flask
+gunicorn
+# Si usas exportaciones reales, agrega:
+# pandas
+# openpyxl
+# reportlab

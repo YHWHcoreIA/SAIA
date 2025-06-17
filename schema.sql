@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS accounts;
+CREATE TABLE accounts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    code TEXT UNIQUE NOT NULL,
+    name TEXT NOT NULL,
+    type TEXT
+);
