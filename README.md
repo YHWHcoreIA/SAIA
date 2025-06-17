@@ -31,6 +31,45 @@ es un prototipo de aplicación web desarrollada con Python y Flask. Proporciona 
 ### Inicialización de una base de datos SQLite
 ### Configuración de variables de entorno para el despliegue en la nube
 ### Estructura de archivos y carpetas para una aplicación Flask
+
+Requisitos Previos
+Python: Asegúrate de tener Python instalado (preferiblemente Python 3.6 o superior).
+Pip: Necesitarás pip para instalar las dependencias.
+Pasos para el Despliegue Local
+Clonar el Repositorio:
+Abre tu terminal y clona el repositorio:
+
+Copiar
+git clone https://github.com/YHWHcoreIA/SAIA.git
+cd SAIA
+Crear un Entorno Virtual (opcional pero recomendado):
+
+Copiar
+python -m venv venv
+source venv/bin/activate  # En Windows usa: venv\Scripts\activate
+Instalar Dependencias:
+Instala las librerías necesarias con pip:
+
+Copiar
+pip install -r requirements.txt
+Configurar la Base de Datos:
+Asegúrate de que la base de datos SQLite esté configurada correctamente. Puede que necesites ejecutar un script para inicializarla.
+
+Configurar Variables de Entorno:
+Si hay variables de entorno necesarias, configúralas en un archivo .env en la raíz del proyecto.
+
+Ejecutar la Aplicación:
+Finalmente, ejecuta la aplicación:
+
+Copiar
+python app.py  # O el nombre del archivo principal de la aplicación
+Acceder a la Aplicación:
+Abre tu navegador y ve a http://127.0.0.1:5000/ (o el puerto que esté configurado).
+
+Notas Adicionales
+Revisa la documentación del proyecto en el repositorio para detalles específicos sobre la configuración y cualquier otro paso necesario.
+Asegúrate de que todas las dependencias estén correctamente instaladas y de que no haya errores en la consola.
+
 ## Pila Tecnológica
 ### Python
 ### Flask
